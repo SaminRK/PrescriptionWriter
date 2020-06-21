@@ -3,16 +3,14 @@ import './SuggestionBox.css';
 
 class SuggestionBox extends Component {
     render() {
+        if (this.props.suggestions.length === 0) return null;
         return ( 
             <div className='suggestionBox'>
-                <hr></hr>
                 {this.props.word}
-                <hr></hr>
                 <ul>
                     {this.props.suggestions.map((word, index) => 
                         <li key={word} className={index === this.props.selected ? 'highlight' : null} >{word}</li>)}
                 </ul>
-                <hr></hr>
             </div>
          );
     }

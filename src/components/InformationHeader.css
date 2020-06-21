@@ -1,0 +1,9 @@
+.headerContainer {
+    padding: 10pt;   
+    box-shadow: 0 0 4px black;
+}
+
+.inputArea {
+    font-size: inherit;
+    padding: 3pt;
+}
