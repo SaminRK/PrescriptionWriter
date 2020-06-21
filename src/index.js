@@ -26,8 +26,8 @@ class MyEditor extends React.Component {
   }
 
   handleKeyCommand(command, editorState) {
-    if (command === 'myeditor-write-suggest' && 
-      this.state.suggestions.length > this.state.suggestionSelected) {
+    console.log(command);
+    if (command === 'suggest-write') {
       const currentState = this.state.editorState.getCurrentContent();
       const selection = this.state.editorState.getSelection();
       const ao = selection.getFocusOffset() - this.state.lastWord.length;
@@ -38,7 +38,19 @@ class MyEditor extends React.Component {
 			const es = EditorState.push(this.state.editorState, ncs, 'insert-fragment');
 			this.onChange(es);
 			return 'handled';
-		}
+    }
+    if (command === 'suggest-up') {
+      let newSelect = this.state.suggestionSelected;
+      newSelect = (newSelect - 1 + this.state.suggestions.length) % this.state.suggestions.length;
+      this.setState({ suggestionSelected : newSelect});
+      return 'handled';
+    }
+    if (command === 'suggest-down') {
+      let newSelect = this.state.suggestionSelected;
+      newSelect = (newSelect + 1) % this.state.suggestions.length;
+      this.setState({ suggestionSelected : newSelect});
+      return 'handled';
+    }
 
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -50,25 +62,42 @@ class MyEditor extends React.Component {
   }
 
   myKeyBindingFn(e) {
-    if (e.keyCode === 9 /* TAB key */ && e.shiftKey) {
-      return 'myeditor-write-suggest';
+    console.log(e.keyCode);
+    if (e.keyCode === 9 /* TAB key */ && this.state.suggestions.length > this.state.suggestionSelected) {
+      return 'suggest-write';
+    }
+    if (e.keyCode === 38 && this.state.suggestions.length > 1) {
+      return 'suggest-up';
+    }
+    if (e.keyCode === 40 && this.state.suggestions.length > 1) {
+      return 'suggest-down';
     }
     return getDefaultKeyBinding(e);
   }
   
 
   setLastWordAndSuggestions() {
-    const currentState = this.state.editorState.getCurrentContent();
-    const lastBlock = currentState.getLastBlock();
-    const lastBlockTextArray = lastBlock
-                                  .getText()
-                                  .split(/(\s+)/);
     let lastWord = '';
-    if (lastBlockTextArray.length > 0) {
-      lastWord = lastBlockTextArray[lastBlockTextArray.length - 1];
+
+    const selection = this.state.editorState.getSelection();
+    if (selection.getAnchorKey() === selection.getFocusKey() &&
+        selection.getAnchorOffset() === selection.getFocusOffset()) {
+      
+      const content = this.state.editorState.getCurrentContent();
+      const block = content.getBlockForKey(selection.getAnchorKey());
+      const textArray = block.getText().slice(0, selection.getAnchorOffset()).split(/(\s+)/);
+      
+      if (textArray.length > 0) {
+        lastWord = textArray[textArray.length - 1];
+      }
     }
+    
     if (lastWord !== this.state.lastWord) {
-      this.setState({ lastWord, suggestions: SuggestionListProvider.provideSuggestion(lastWord)});
+      this.setState({ 
+        lastWord,
+        suggestions: SuggestionListProvider.provideSuggestion(lastWord),
+        suggestionSelected : 0
+      });
     }
   }
 
@@ -85,6 +114,7 @@ class MyEditor extends React.Component {
         <SuggestionBox 
           word = {this.state.lastWord}
           suggestions = {this.state.suggestions}
+          selected = {this.state.suggestionSelected}
         />
       </div>      
     );

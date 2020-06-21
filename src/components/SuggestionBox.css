@@ -1,0 +1,8 @@
+.suggestionBox {
+    border-color: black;
+    border-width: 2px;
+}
+
+.highlight {
+    background-color: darkslateblue;
+}
