@@ -9,7 +9,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "draft-js": "0.11.6"
+    "draft-js": "0.11.6",
+    "react-render-html": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

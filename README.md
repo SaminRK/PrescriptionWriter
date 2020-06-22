@@ -1,3 +1,10 @@
+### Prescription Writer
+
+This repository contains the code to the Prescription Writer, which has been implemented using
+[draft-js](https://draftjs.org/) over [React JS](https://reactjs.org/).
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

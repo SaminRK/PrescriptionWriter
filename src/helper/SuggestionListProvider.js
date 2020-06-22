@@ -1,18 +1,16 @@
 class SuggestionListProvider {
     static dict = [
-        'apple',
-        'ball',
-        'cat',
-        'dog',
-        'elephant',
-        'fish',
-        'goat',
-        'hello',
-        'icecream',
-        'jungle',
-        'lion',
-        'mouse',
-        'north',
+        'Ace Plus®',
+        'Ace®',
+        'Ace® Power',
+        'Acetram®',
+        'Adryl®',
+        'Afun®',
+        'Ambrox®',
+        'Amodis®',
+        'Angilock®',
+        'Angilock® plus',
+        '<b>Napa</b> tablet'
     ]
 
     static provideSuggestion(string) {
@@ -28,3 +26,4 @@ class SuggestionListProvider {
 }
 
 export default SuggestionListProvider;
+
