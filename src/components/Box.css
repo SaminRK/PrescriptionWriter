@@ -2,3 +2,14 @@
     min-height: 5cm;
     height: fit-content;
 }
+
+.boxHeading {
+    width: inherit;
+}
+
+.textArea {
+    font-size: inherit;
+    padding: 3pt;
+    border: 0px;
+    background-color: #f0f8fe;
+}
