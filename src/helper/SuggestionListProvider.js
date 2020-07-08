@@ -10,10 +10,18 @@ class SuggestionListProvider {
         'Amodis®',
         'Angilock®',
         'Angilock® plus',
-        '<b>Napa</b> tablet'
+        'Napa tablet\n\t\t1+0+1' // does not display on suggestion box but writer on editor
     ]
 
     static provideSuggestion(string) {
+        return this.wordsHavingRegexInside(string);
+    }
+
+    static wordsStartingWith(string) {
+        return [];
+    }
+
+    static wordsHavingRegexInside(string) {
         let suggestions = [];
         const cleanString = string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
 

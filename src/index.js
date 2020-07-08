@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "draft-js/dist/Draft.css";
 import * as serviceWorker from "./helper/serviceWorker";
 import MyEditor from "./components/MyEditor";
+import Column from "./components/Column";
 import InformationHeader from "./components/InformationHeader";
 import "./index.css";
 
@@ -13,10 +14,10 @@ class App extends React.Component {
 				<InformationHeader />
 				<div className="columnContainer">
 					<div className="column">
-						<MyEditor />
+						<Column />
 					</div>
 					<div className="column">
-						<MyEditor />
+						<Column />
 					</div>
 				</div>
 			</div>
