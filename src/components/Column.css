@@ -1,0 +1,18 @@
+.addBoxButtonImage {
+    height: 20px;
+    width: 20px;
+}
+
+.addBoxButton {
+    background-color: rgba(255,255,255,0);
+    border-radius: 25%;
+}
+
+.addBoxButton:hover {
+    background-color: #4caf50;
+}
+
+.addBoxButtonContainer {
+    display: flex;
+    justify-content: center;
+}

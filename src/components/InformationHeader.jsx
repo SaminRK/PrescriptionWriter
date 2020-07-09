@@ -5,17 +5,20 @@ class InformationHeader extends Component {
 	render() {
 		return (
 			<div className="headerContainer">
-				<span className="inputContainer">
-					Name: &nbsp; &nbsp;
-					<input type="text" className="inputArea"></input>
-				</span>
+				Name: &nbsp; &nbsp;
+				<input type="text" className="lineInput"></input>
 				<br />
 				Age: &nbsp; &nbsp;
-				<input type="text" className="inputArea"></input>
+				<input type="text" className="lineInput"></input>
 				&nbsp; &nbsp; &nbsp; &nbsp; Sex: &nbsp; &nbsp;
-				<input type="text" className="inputArea"></input> <br />
+				<select name="sex" id="sex" className="selector">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="non-binary">Non-Binary</option>
+				</select>
+				<br />
 				Address: &nbsp; &nbsp;
-				<input type="text" className="inputArea"></input>
+				<textarea className="textBox"></textarea>
 			</div>
 		);
 	}

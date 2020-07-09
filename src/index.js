@@ -1,26 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import "draft-js/dist/Draft.css";
 import * as serviceWorker from "./helper/serviceWorker";
-import MyEditor from "./components/MyEditor";
-import Column from "./components/Column";
-import InformationHeader from "./components/InformationHeader";
+import Prescription from "./components/Prescription";
 import "./index.css";
 
-class App extends React.Component {
+class App extends Component {
+
 	render() {
 		return (
-			<div className="page">
-				<InformationHeader />
-				<div className="columnContainer">
-					<div className="column">
-						<Column />
-					</div>
-					<div className="column">
-						<Column />
-					</div>
-				</div>
-			</div>
+			<Prescription />
 		);
 	}
 }

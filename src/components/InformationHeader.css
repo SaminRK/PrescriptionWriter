@@ -1,9 +1,25 @@
 .headerContainer {
     padding: 10pt;   
     box-shadow: 0 0 4px black;
+    font-size: inherit;
+    
 }
 
-.inputArea {
+.lineInput {
     font-size: inherit;
-    padding: 3pt;
+    padding: 3px;
+    margin: 5px;
+}
+
+.textBox {
+    font-size: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+    margin: 5px;
+    width: -webkit-fill-available;
+}
+
+.selector {
+    font-size: inherit;
+    font-family: Arial, Helvetica, sans-serif;
 }
