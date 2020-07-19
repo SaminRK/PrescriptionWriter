@@ -5,17 +5,19 @@ import "./SuggestionBox.css";
 class SuggestionBox extends Component {
 	render() {
 		if (this.props.suggestions.length === 0) return null;
-		const coords = window
-			.getSelection()
-			.getRangeAt(0)
-			.getBoundingClientRect();
+		const sel = window.getSelection();
+		if (sel.rangeCount === 0) return null;
+		const coords = sel.getRangeAt(0).getBoundingClientRect();
+		const viewPortElement = document.documentElement;
+		const scrollLeft = viewPortElement.scrollLeft;
+		const scrollTop = viewPortElement.scrollTop;
 		return (
 			<div
 				className="suggestionBox"
 				style={{
 					position: "absolute",
-					top: coords.y + 25,
-					left: coords.x,
+					top: coords.top + 27 + scrollTop,
+					left: coords.left + scrollLeft,
 				}}
 			>
 				{this.props.word}
