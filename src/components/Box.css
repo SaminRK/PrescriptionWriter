@@ -1,4 +1,5 @@
 .box {
+    width: 10cm;
     min-height: 5cm;
     height: fit-content;
 }
